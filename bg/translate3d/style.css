@@ -20,14 +20,18 @@ body {
   height: 100%;
   background: url(./bg.jpg) no-repeat 0 0;
   background-size: cover;
-  -webkit-transform: scale(1.05);
-  transform: scale(1.05);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .txt {
   position: absolute;
-  top: 0;
-  left: 0;
-  font-size: 70px;
-  color: dodgerblue;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 120px;
+  font-weight: bold;
+  color: #555;
+  width: 100%;
+  text-align: center;
 }
