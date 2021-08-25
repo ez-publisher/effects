@@ -11,3 +11,5 @@ button::-moz-focus-inner {padding: 0; border: 0;}
 article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {display: block; position: relative;}
 
 .inner {margin: auto; width: 1600px;}
+.ex + .ex {margin-top: 60px;}
+.tit {font-size: 26px; text-transform: uppercase;}
