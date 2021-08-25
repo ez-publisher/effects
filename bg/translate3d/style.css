@@ -34,4 +34,7 @@ body {
   color: #555;
   width: 100%;
   text-align: center;
+  background: linear-gradient(to right, #cc9696, #3d85f1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
