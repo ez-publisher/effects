@@ -8,6 +8,10 @@
   <link rel="stylesheet" href="./css/style.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.1/css/OverlayScrollbars.min.css" rel="stylesheet" type="text/css">
   <title>OverlayScrollbars</title>
+  <style>
+    pre {text-align: left;}
+    code {word-wrap: break-word; font-family: "맑은 고딕", sans-serif;}
+  </style>
 </head>
 <body>
 
@@ -18,11 +22,37 @@
     <div class="box-wrap">
       <p class="tit">scrollstart</p>
       <div class="box box1">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, doloremque? A quasi architecto itaque voluptates? Fugit dignissimos minus rem blanditiis qui aliquid, fuga temporibus natus fugiat animi inventore possimus iusto!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, doloremque? A quasi architecto itaque voluptates? Fugit dignissimos minus rem blanditiis qui aliquid, fuga temporibus natus fugiat animi inventore possimus iusto!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, doloremque? A quasi architecto itaque voluptates? Fugit dignissimos minus rem blanditiis qui aliquid, fuga temporibus natus fugiat animi inventore possimus iusto!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, doloremque? A quasi architecto itaque voluptates? Fugit dignissimos minus rem blanditiis qui aliquid, fuga temporibus natus fugiat animi inventore possimus iusto!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, doloremque? A quasi architecto itaque voluptates? Fugit dignissimos minus rem blanditiis qui aliquid, fuga temporibus natus fugiat animi inventore possimus iusto!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, doloremque? A quasi architecto itaque voluptates? Fugit dignissimos minus rem blanditiis qui aliquid, fuga temporibus natus fugiat animi inventore possimus iusto!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, doloremque? A quasi architecto itaque voluptates? Fugit dignissimos minus rem blanditiis qui aliquid, fuga temporibus natus fugiat animi inventore possimus iusto!
+        111Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, doloremque? A quasi architecto itaque voluptates? Fugit dignissimos minus rem blanditiis qui aliquid, fuga temporibus natus fugiat animi inventore possimus iusto!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, doloremque? A quasi architecto itaque voluptates? Fugit dignissimos minus rem blanditiis qui aliquid, fuga temporibus natus fugiat animi inventore possimus iusto!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, doloremque? A quasi architecto itaque voluptates? Fugit dignissimos minus rem blanditiis qui aliquid, fuga temporibus natus fugiat animi inventore possimus iusto!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, doloremque? A quasi architecto itaque voluptates? Fugit dignissimos minus rem blanditiis qui aliquid, fuga temporibus natus fugiat animi inventore possimus iusto!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, doloremque? A quasi architecto itaque voluptates? Fugit dignissimos minus rem blanditiis qui aliquid, fuga temporibus natus fugiat animi inventore possimus iusto!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, doloremque? A quasi architecto itaque voluptates? Fugit dignissimos minus rem blanditiis qui aliquid, fuga temporibus natus fugiat animi inventore possimus iusto!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, doloremque? A quasi architecto itaque voluptates? Fugit dignissimos minus rem blanditiis qui aliquid, fuga temporibus natus fugiat animi inventore possimus iusto!
       </div>
       <div class="desc">
         <p>스크롤을 시작한 후 함수 호출</p>
         <p>scroll start : <strong class="num">0</strong></p>
+        <div style="text-align: left;">
+          var cnt = 0;<br>
+          $(".box1").overlayScrollbars({<br>
+            callbacks: {<br>
+              onScrollStart: function() {<br>
+                cnt++;<br>
+                $(".num").html(cnt);<br>
+                console.log("scroll start");<br>
+              }<br>
+            }<br>
+          });
+        </div>
+          <pre>
+            <!-- <code>
+  var cnt = 0;
+  $(".box1").overlayScrollbars({
+    callbacks: {
+      onScrollStart: function() {
+        cnt++;
+        $(".num").html(cnt);
+        console.log("scroll start");
+      }
+    }
+  });
+            </code> -->
+          </pre>
       </div>
     </div>
     <div class="box-wrap">
@@ -32,6 +62,21 @@
       </div>
       <div class="desc">
         <p>스크롤할 때마다 함수 호출<br>ex) 스크롤top값이 200이상일 경우 배경색 변경</p>
+        <pre>
+          <code>
+$(".box2").overlayScrollbars({
+  callbacks: {
+    onScroll: function(color) {
+      if(color.srcElement.scrollTop > 200) {
+        $(".box2").addClass("bg");
+      } else {
+        $(".box2").removeClass("bg");
+      }
+    }
+  }
+});
+          </code>
+        </pre>
       </div>
     </div>
     <div class="box-wrap">
@@ -43,6 +88,21 @@
       </div>
       <div class="desc">
         <p>스크롤을 멈춘 후 함수 호출<br>ex) 스크롤을 멈췄을 때 박스 이동 멈춤</p>
+        <pre>
+          <code>
+$(".box3").overlayScrollbars({
+  callbacks: {
+    onScroll: function() {
+      $(".box3 .small-box").removeClass("off");
+    },
+    onScrollStop: function(move) {
+      console.dir(move);
+      $(".box3 .small-box").addClass("off");
+    }
+  }
+});
+          </code>
+        </pre>
       </div>
     </div>
     <div class="box-wrap">
@@ -52,6 +112,17 @@
       </div>
       <div class="desc">
         <p>스크롤이 해당 콘텐츠 끝에 도달했을 때 함수 호출<br>ex) 스크롤이 해당 콘텐츠 끝에 도달했을 때 alert창 띄움</p>
+        <pre>
+          <code>
+$(".box4").overlayScrollbars({
+  callbacks: {
+    onScroll: function(h) {
+      if(h.srcElement.scrollTop == (h.srcElement.scrollHeight - h.srcElement.offsetHeight)) alert("알림");
+    }
+  }
+});
+          </code>
+        </pre>
       </div>
     </div>
     <div class="box-wrap">
@@ -61,6 +132,30 @@
       </div>
       <div class="desc">
         <p>ex) 창너비가 768px이상 일때 destory 호출</p>
+        <pre>
+          <code>
+var ins = OverlayScrollbars($(".box5"));
+var timer = null;
+
+function changeWidth() {
+  $(window).resize(function() {
+    var winW = $(window).innerWidth();
+
+    clearTimeout(timer);
+    console.log(timer);
+    timer = setTimeout(function() {
+      if(winW > 768) {
+        ins.destroy();
+      } else {
+        ins = OverlayScrollbars($(".box5"), {});
+      }
+    }, 100);
+
+  }).trigger("resize");
+}
+changeWidth();
+          </code>
+        </pre>
       </div>
     </div>
   </div>
