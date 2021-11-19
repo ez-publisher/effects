@@ -1,0 +1,15 @@
+## 파일 무시
+test.txt
+notice.txt
+
+## 다음과 같은 확장자는 전체 무시
+*.map
+/*.mp4
+
+## 폴더 무시
+.vscode/
+.git/
+.history/
+**/video/
+/node_modules
+package-lock.json
