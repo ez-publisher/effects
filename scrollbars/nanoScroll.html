@@ -26,6 +26,19 @@
         <p>스크롤이 콘텐츠 요소의 맨 상단에 <br>도달할 때마다 호출하는 이벤트</p>
         <p>ex) 스크롤이 맨 상단에 도달할 때 alert창 생성</p>
       </div>
+
+      <div class="code-view">
+        <p class="txt">Code<p>
+        <p>-</p>
+        <div class="code">
+          $(".box1").on("scrolltop", function(){ <br>
+            &nbsp;&nbsp;&nbsp;&nbsp; scroll: "top", <br>
+            &nbsp;&nbsp;&nbsp;&nbsp; alwaysVisible: true, <br>
+            &nbsp;&nbsp;&nbsp;&nbsp; preventPageScrolling: true, <br>
+            &nbsp;&nbsp;&nbsp;&nbsp; alert("Scroll Top!"); <br>
+          });
+        </div>
+      </div>
     </div>
     <div class="box-wrap">
       <p class="tit">update</p>
@@ -37,6 +50,9 @@
         <p>스크롤할 때마다 호출하는 이벤트</p>
         <p>ex) 스크롤의 위치가 200px 이상일 때 배경색 변경</p>
       </div>
+
+      
+      
     </div>
     <div class="box-wrap">
       <p class="tit">scrollend</p>
