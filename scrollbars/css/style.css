@@ -65,7 +65,7 @@ h2 a:hover::after {width: 100%;}
 .nano-scroll .code-view .txt {position: relative; margin-bottom: 8px; font-size: 20px;}
 /* .nano-scroll .code-view .txt::after {content: ""; position: absolute; bottom: 0; left: 0; margin-bottom: -10px; width: 30px; height: 1px; background: #fff;} */
 
-.nano-scroll pre {margin-left: -100px;}
+.nano-scroll pre {margin-left: -80px;}
 
 /* overlay_유아현 */
 .box2.bg {background-color: #0010e2; transition: background-color .3s ease; color: rgba(255, 255, 255, .7);}
