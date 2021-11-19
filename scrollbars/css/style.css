@@ -58,7 +58,7 @@ h2 a:hover::after {width: 100%;}
 .nano-scroll .box.nano {transition: .3s;}
 .nano-scroll .box2.nano.bg {background: #0010e2; color: rgba(255, 255, 255, .7); transition: .3s;}
 .nano-scroll .desc p:first-child {margin-bottom: 10px;}
-.nano-scroll .code-view {margin: 20px auto 0; padding: 10px; box-sizing: border-box; border: 1px solid #fff; line-height: 1.5;}
+.nano-scroll .code-view {margin: 20px auto 0; padding: 10px 10px 20px 30px; box-sizing: border-box; border: 1px solid #fff; line-height: 1.5;}
 .nano-scroll .code-view .txt {font-size: 20px;}
 
 
