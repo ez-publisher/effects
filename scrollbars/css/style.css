@@ -29,6 +29,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, 
 
 
 
+
+
 /* 공통 css */
 body {padding: 100px 50px; background: #1355f6; color: #fff; height: 100vh; position: relative;}
 h1, h2 {text-align: center;}
@@ -61,7 +63,7 @@ h2 a:hover::after {width: 100%;}
 
 
 /* overlay_유아현 */
-.box2.bg {background-color: #0010e2; transition: background-color 0.3s ease;color: rgba(255, 255, 255, .7);}
+.box2.bg {background-color: #0010e2; transition: background-color .3s ease; color: rgba(255, 255, 255, .7);}
 .box3 p {display: flex; justify-content: center; align-items: center; height: 700px;}
 .small-box {width: 80px; height: 80px; background-color: #84e0fc; animation: moveBox 2s infinite alternate linear;}
 .small-box.off {animation: none;}
@@ -69,3 +71,16 @@ h2 a:hover::after {width: 100%;}
   0% {transform: translateX(0);}
   100% {transform: translateX(100%);}
 }
+
+
+
+
+
+/* index css */
+.wrap {display: flex; align-items: center; justify-content: space-between; width: 1020px; margin: 300px auto 0; font-family: "Montserrat", sans-serif;}
+.wrap div {position: relative;}
+.wrap div a {font-size: 40px; display: inline-block; font-weight: 700; line-height: 1.1;}
+.wrap div a span {font-size: 20px; letter-spacing: .09em; transition: all .3s;}
+.wrap div a::after {content: ""; display: inline-block; width: 0; background: #00288a; height: 25px; position: absolute; bottom: -3px; left: 0; z-index: -1; transition: all .3s;}
+.wrap div a:hover::after {width: 100%;}
+.wrap div a:hover span {margin-left: 12px;}
