@@ -1,0 +1,71 @@
+@charset "UTF-8";
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+
+
+* {margin: 0; padding: 0; box-sizing: border-box; outline: none;}
+html {width: 100%; height: 100%;}
+body {position: relative; font-family: "Noto Sans KR", sans-serif; font-weight: normal; font-size: 16px; letter-spacing: .02em; line-height: 1; height: 100%; -webkit-text-size-adjust: 100%; -moz-text-size-adjust: 100%; -ms-text-size-adjust: 100%; line-height: 1; overflow-x: hidden;}
+body, div, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, p, form, fieldset, table, tr, th, td {margin: 0; padding: 0;}
+ul, ol, li {list-style: none;}
+img, fieldset {border: none; vertical-align: top;}
+legend, caption {position: absolute; top: -9999px; left: -9999px; z-index: -1;}
+textarea, button {vertical-align: middle;} 
+input, select {vertical-align: middle; background: #fff; border: 1px solid #ccc; font-family: "HyundaiSansTextKRRegular", "맑은 고딕", "Malgun Gothic", sans-serif; color: #999; letter-spacing: 0; border-radius: 0; font-size: 16px;}
+input {padding: 3px 10px; height: 32px;}
+option {padding: 3px 10px;}
+input[type="radio"], input[type="checkbox"] {border: 0; padding: 0; height: auto; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none;}
+input[type="password"] {height: 40px; border: 1px solid #ccc; color: #999; background: #fff; -webkit-appearance: none; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none;}
+input[type="text"] {width: 278px; background: #fff; -webkit-appearance: none; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none;}
+select {padding: 5px; height: 40px; border: 1px solid #ccc; background: #fff;}
+textarea {padding: 10px; vertical-align: middle; background: #fff; border: 1px solid #ccc; font-family: "HyundaiSansTextKRRegular", "맑은 고딕", "Malgun Gothic", sans-serif; color: #999; font-size: 16px; letter-spacing: 0; -webkit-appearance: none; -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; border-radius: 0;}
+a {text-decoration: none; color: inherit;}
+a:hover, a:focus, a:active {text-decoration: none;}
+table {border-collapse: collapse; width: 100%;}
+button {background: none; border: none; padding: 0; margin: 0; cursor: pointer; overflow: visible; white-space: nowrap; font-size: 16px; font-family: "HyundaiSansTextKRMedium", "맑은 고딕", "Malgun Gothic", sans-serif;}
+button:active {outline: none;}
+button::-moz-focus-inner {padding: 0; border: 0;}
+article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {display: block;}
+
+
+
+/* 공통 css */
+body {padding: 100px 50px; background: #1355f6; color: #fff; height: 100vh; position: relative;}
+h1, h2 {text-align: center;}
+h2 {margin: 65px 0 200px;}
+h2 a {display: inline-block; position: relative; padding-bottom: 10px; opacity: .8; transition: all .3s;}
+h2 a::after {content: ""; background: #fff; width: 0; height: 3px; display: block; position: absolute; bottom: 0; transition: all .3s;}
+h2 a:hover {opacity: 1;}
+h2 a:hover::after {width: 100%;}
+
+.content {width: 900px; margin: 0 auto; overflow: hidden; display: flex; flex-wrap: wrap; justify-content: space-between;}
+.box-wrap {position: relative; width: 350px; margin-bottom: 130px;}
+.box-wrap .tit {font-size: 22px; font-weight: 500; margin: 0 0 30px 10px; text-align: center;}
+.box-wrap .box {width: 300px; margin: 0 auto; height: 450px; background: #fff; border-radius: 15px; padding: 20px 5px 20px 20px; line-height: 1.5; font-weight: 300; font-size: 15px; color: #1355f6;}
+.box-wrap .desc {font-size: 15px; margin-top: 15px; font-weight: 300; line-height: 1.5; text-align: center; opacity: .8;}
+.box-wrap .desc span {position: absolute; left: 50%; transform: translateX(-50%); font-style: italic; font-weight: 500;}
+
+
+/* minibar_여지슬 */
+.zs .box-wrap .box .mb-bar {background: #1355f6; width: 8px; margin-right: -3px;}
+.zs .box-wrap .box .mb-track {background: rgba(19, 85, 246, .2);}
+.zs .box-wrap .box .mb-track-y {width: 2px;}
+.zs .box {transition: all .3s;}
+.zs .box.bg {background: #0010e2; color: rgba(255, 255, 255, .7);}
+
+
+/* nanoscroll_김지수 */
+.nano-scroll .box.nano {transition: .3s;}
+.nano-scroll .box2.nano.bg {background: #0010e2; color: rgba(255, 255, 255, .7); transition: .3s;}
+.nano-scroll .desc p:first-child {margin-bottom: 10px;}
+
+
+/* overlay_유아현 */
+.box2.bg {background-color: #0010e2; transition: background-color 0.3s ease;color: rgba(255, 255, 255, .7);}
+.box3 p {display: flex; justify-content: center; align-items: center; height: 700px;}
+.small-box {width: 80px; height: 80px; background-color: #84e0fc; animation: moveBox 2s infinite alternate linear;}
+.small-box.off {animation: none;}
+@keyframes moveBox {
+  0% {transform: translateX(0);}
+  100% {transform: translateX(100%);}
+}
