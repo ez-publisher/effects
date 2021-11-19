@@ -76,11 +76,8 @@
       <div class="code-view">
         <p class="txt">Code<p>
         <pre>
-          $(".box1").on("scrolltop", function(){
-            scroll: "top",
-            alwaysVisible: true,
-            preventPageScrolling: true,
-            alert("Scroll Top!");
+          $(".box3").on("scrollend", function () {
+            alert("Scroll End!");
           });
         </pre>
       </div>
@@ -98,23 +95,21 @@
       <div class="code-view">
        <p class="txt">Code<p>
        <pre>
-          $(".box3").on("scrollend", function () {
-            var timer = null;
-            $(window).on("resize", function () {
-              clearTimeout(timer);
-              timer = setTimeout(function () {
-                if ($(window).width() > 1000) { 
-                  $(".box4").nanoScroller({
-                    destroy: true,
-                  });
-                } else {
-                  $(".box4").nanoScroller({
-                    destroy: false,
-                  });
-                }
-              }, 100);
-            }); $(window).trigger("resize");
-          });
+          var timer = null;
+          $(window).on("resize", function () {
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+              if ($(window).width() > 1000) { 
+                $(".box4").nanoScroller({
+                  destroy: true,
+                });
+              } else { 
+                $(".box4").nanoScroller({
+                  destroy: false,
+                });
+              }
+            }, 100);
+          }); $(window).trigger("resize");
        </pre>
      </div>
     </div>
