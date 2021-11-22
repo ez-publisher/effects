@@ -25,6 +25,20 @@
       <div class="desc">
         <p>스크롤 할 때마다 이벤트 실행<br><span class="num"></span></p>
       </div>
+      <pre>
+    new MiniBar('.box1', {
+      alwaysShowBars: true,
+      onScroll: function(self) {
+        if(self.scrollTop > 200) {
+          $(".box1").addClass("bg");
+        } else{
+          $(".box1").removeClass("bg");
+        }
+        count++;
+        $(".num").html(count);
+      },
+    });
+      </pre>
     </div>
     <div class="box-wrap">
       <p class="tit">onScroll 2</p>
@@ -34,6 +48,19 @@
       <div class="desc">
         <p>scrollTop 값이 전체 높이값에 도달했을 때<br>이벤트 실행<br><span class="num2"></span></p>
       </div>
+      <pre>
+    new MiniBar('.box2', {
+      alwaysShowBars: true,
+      onScroll: function(self) {
+        console.log(self.scrollTop)
+        var scrollEnd = self.scrollHeight - self.offsetHeight;
+        if(self.scrollTop == scrollEnd) {
+          $(".box2").addClass("bg");
+          $(".num2").html("end!");
+        }
+      },
+    });
+      </pre>
     </div>
     <div class="box-wrap">
       <p class="tit">onScroll 3</p>
@@ -43,6 +70,18 @@
       <div class="desc">
         <p>scrollTop 값이 1보다 클 때 이벤트 실행하기 <br><span class="num3"></span></p>
       </div>
+      <pre>
+    new MiniBar('.box3', {
+      alwaysShowBars: true,
+      onScroll: function(self) {
+        if(self.scrollTop > 1){
+          // console.log("d");
+          $(".box3").addClass("bg");
+          $(".num3").html("start!");
+        }
+      },
+    });
+      </pre>
     </div>
     <div class="box-wrap">
       <p class="tit">destroy</p>
@@ -52,6 +91,20 @@
       <div class="desc">
         <p>윈도우 값이 768 이하일 때 스크롤바 생성</p>
       </div>
+      <pre>
+    $(window).resize(function() { 
+      if($(window).width() < 768) { 
+        new MiniBar('.box4', {
+          alwaysShowBars: true,
+        }); 
+      }else{
+        var ins = new MiniBar('.box4', {
+          alwaysShowBars: true,
+        });
+        ins.destroy()
+      } 
+    });
+      </pre>
     </div>
   </div>
 
