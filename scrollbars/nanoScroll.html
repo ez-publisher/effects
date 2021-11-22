@@ -19,7 +19,7 @@
       <p class="tit">scrolltop</p>
       <div class="box box1 nano">
         <div class="nano-content">
-          123Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, doloremque? A quasi architecto itaque voluptates? Fugit dignissimos minus rem blanditiis qui aliquid, fuga temporibus natus fugiat animi inventore possimus iusto!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, doloremque? A quasi architecto itaque voluptates? Fugit dignissimos minus rem blanditiis qui aliquid, fuga temporibus natus fugiat animi inventore possimus iusto!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, doloremque? A quasi architecto itaque voluptates? Fugit dignissimos minus rem blanditiis qui aliquid, fuga temporibus natus fugiat animi inventore possimus iusto!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, doloremque? A quasi architecto itaque voluptates? Fugit dignissimos minus rem blanditiis qui aliquid, fuga temporibus natus fugiat animi inventore possimus iusto!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, doloremque? A quasi architecto itaque voluptates? Fugit dignissimos minus rem blanditiis qui aliquid, fuga temporibus natus fugiat animi inventore possimus iusto!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, doloremque? A quasi architecto itaque voluptates? Fugit dignissimos minus rem blanditiis qui aliquid, fuga temporibus natus fugiat animi inventore possimus iusto!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, doloremque? A quasi architecto itaque voluptates? Fugit dignissimos minus rem blanditiis qui aliquid, fuga temporibus natus fugiat animi inventore possimus iusto!
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, doloremque? A quasi architecto itaque voluptates? Fugit dignissimos minus rem blanditiis qui aliquid, fuga temporibus natus fugiat animi inventore possimus iusto!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, doloremque? A quasi architecto itaque voluptates? Fugit dignissimos minus rem blanditiis qui aliquid, fuga temporibus natus fugiat animi inventore possimus iusto!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, doloremque? A quasi architecto itaque voluptates? Fugit dignissimos minus rem blanditiis qui aliquid, fuga temporibus natus fugiat animi inventore possimus iusto!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, doloremque? A quasi architecto itaque voluptates? Fugit dignissimos minus rem blanditiis qui aliquid, fuga temporibus natus fugiat animi inventore possimus iusto!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, doloremque? A quasi architecto itaque voluptates? Fugit dignissimos minus rem blanditiis qui aliquid, fuga temporibus natus fugiat animi inventore possimus iusto!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, doloremque? A quasi architecto itaque voluptates? Fugit dignissimos minus rem blanditiis qui aliquid, fuga temporibus natus fugiat animi inventore possimus iusto!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, doloremque? A quasi architecto itaque voluptates? Fugit dignissimos minus rem blanditiis qui aliquid, fuga temporibus natus fugiat animi inventore possimus iusto!
         </div>
       </div>
       <div class="desc">
@@ -29,15 +29,14 @@
 
       <div class="code-view">
         <p class="txt">Code<p>
-        <p>-</p>
-        <div class="code">
-          $(".box1").on("scrolltop", function(){ <br>
-            &nbsp;&nbsp;&nbsp;&nbsp; scroll: "top", <br>
-            &nbsp;&nbsp;&nbsp;&nbsp; alwaysVisible: true, <br>
-            &nbsp;&nbsp;&nbsp;&nbsp; preventPageScrolling: true, <br>
-            &nbsp;&nbsp;&nbsp;&nbsp; alert("Scroll Top!"); <br>
+        <pre>
+          $(".box1").on("scrolltop", function(){
+            scroll: "top",
+            alwaysVisible: true,
+            preventPageScrolling: true,
+            alert("Scroll Top!");
           });
-        </div>
+        </pre>
       </div>
     </div>
     <div class="box-wrap">
@@ -48,11 +47,21 @@
       </div>
       <div class="desc">
         <p>스크롤할 때마다 호출하는 이벤트</p>
-        <p>ex) 스크롤의 위치가 200px 이상일 때 배경색 변경</p>
+        <p>ex) 스크롤의 위치가 200px 이상일 때 <br>backgrund-color 변경</p>
       </div>
 
-      
-      
+      <div class="code-view">
+       <p class="txt">Code<p>
+       <pre>
+          $(".box2").on("update", function (self) {
+            if(self.target.nanoscroller.sliderTop > 200){
+              $(".box2").addClass("bg");
+            }else {
+              $(".box2").removeClass("bg");
+            }
+          });
+       </pre>
+     </div>
     </div>
     <div class="box-wrap">
       <p class="tit">scrollend</p>
@@ -63,6 +72,14 @@
       <div class="desc">
         <p>스크롤이 콘텐츠 요소의 맨 하단에 <br>도달할 때마다 호출하는 이벤트</p>
         <p>ex) 스크롤이 맨 하단에 도달할 때 alert창 생성</p>
+      </div>
+      <div class="code-view">
+        <p class="txt">Code<p>
+        <pre>
+          $(".box3").on("scrollend", function () {
+            alert("Scroll End!");
+          });
+        </pre>
       </div>
     </div>
     <div class="box-wrap">
@@ -75,6 +92,26 @@
         <p>플러그인을 제거하고 <br>브라우저의 기본 스크롤바를 복원하는 메서드</p>
         <p>ex) 브라우저 너비가 1000px 미만이면 플러그인 생성</p>
       </div>
+      <div class="code-view">
+       <p class="txt">Code<p>
+       <pre>
+          var timer = null;
+          $(window).on("resize", function () {
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+              if ($(window).width() > 1000) { 
+                $(".box4").nanoScroller({
+                  destroy: true,
+                });
+              } else { 
+                $(".box4").nanoScroller({
+                  destroy: false,
+                });
+              }
+            }, 100);
+          }); $(window).trigger("resize");
+       </pre>
+     </div>
     </div>
   </div>
 
