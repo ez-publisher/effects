@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/index.css">
+  <title>flip</title>
+</head>
+<body>
+  <div class="flip-prac">
+    <h1>Flip 플러그인 예제</h1>
+    <div class="width-height">
+      <h3>width / height 조절</h3>
+      <div class="wrap">
+        <div class="left-side">
+          <div class="container1">
+            <div class="box">
+              <p>높이와 넓이를 조절함</p>
+            </div>
+            <!-- .box가 flip버튼을 누르는 순간 container1에서 container2로 옮겨지면서 박스 width / height값 변경 -->
+          </div>
+          <a href="javascript:" class="button">FLIP</a>
+        </div>
+        <div class="right-side">
+          <div class="container2"></div>
+        </div>
+      </div>
+    </div>
+    <div class="scale-change">
+      <h3>scale 조절</h3>
+      <div class="wrap">
+        <div class="left-side">
+          <div class="container1">
+            <div class="box">
+              <p>width, height 대신에 scaleX, scaleY값을 변경함</p>
+              <img src="./images/img-1.jpg" alt="">
+            </div>
+            <!-- .box가 flip버튼을 누르는 순간 container1에서 container2로 옮겨지면서 박스 scale값 변경 -->
+          </div>
+          <a href="javascript:" class="button">FLIP</a>
+        </div>
+        <div class="right-side">
+          <div class="container2"></div>
+        </div>
+      </div>
+    </div>
+    <div class="swap-elements">
+      <h3>서로 다른 요소 변경 (왼쪽 이미지를 드래그 해보세요)</h3>
+      <div class="wrap">
+        <div class="left-side">
+          <div class="container1">
+            <img class="box small-img" src="./images/img-1.jpg" alt="">
+            <!-- .box가 flip버튼을 누르는 순간 container1의 요소가 자연스럽게 container2로 옯겨지면서 안의 요소가 변경 -->
+          </div>
+          <a href="javascript:" class="button">FLIP</a>
+        </div>
+        <div class="right-side">
+          <div class="container2">
+            <img class="big-img" src="./images/img-2.jpg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/jquery-2.2.4.min.js"></script>
+  <script src="./js/gsap.min.js"></script>
+  <script src="./js/Flip.min.js"></script>
+  <script src="./js/Draggable.min.js"></script>
+  <!-- <script src="./js/index.js"></script> -->
+
+  <script>
+    $(function() {
+      gsap.registerPlugin(Flip, Draggable);
+
+      // width, height 값 변경
+      var widthHeight = $(".flip-prac .width-height");
+      widthHeight.find(".button").on("click", function() {
+        var container1 = widthHeight.find(".container1");
+        var container2 = widthHeight.find(".container2");
+        var box = widthHeight.find(".box");
+
+        // 움직여야 할 요소의 정보를 getState로 받아옴
+        var state = Flip.getState(box);
+
+        // 움직여야 할 요소($(".box"))의 일치 여부 확인 후
+        var boxParent = box.parent()[0] === container1[0] ? boxParent = container2 : boxParent = container1;
+
+        // 요소가 일치하면(true면) 움직여야 하는 위치로 움직이기
+        boxParent.append(box);
+        Flip.from(state, {duration: 1});
+      });
+
+      // scale 값 변경
+      var scaleChange = $(".flip-prac .scale-change");
+      scaleChange.find(".button").on("click", function() {
+        var container1 = scaleChange.find(".container1");
+        var container2 = scaleChange.find(".container2");
+        var box = scaleChange.find(".box");
+        var state = Flip.getState(box);
+        
+        // 움직여야 할 요소($(".box"))의 일치 여부 확인 후
+        var boxParent = box.parent()[0] === container1[0] ? boxParent = container2 : boxParent = container1;
+
+        // 요소가 일치하면(true면) 움직여야 하는 위치로 움직이기
+        boxParent.append(box);
+        Flip.from(state, {duration: 1, scale: true,});
+      }); 
+
+      // 서로 다른 요소 변경
+      var swapElements = $(".flip-prac .swap-elements");
+      var smallImg = swapElements.find(".small-img");
+      var bigImg = swapElements.find(".big-img");
+      Draggable.create(swapElements.find(".container1"));
+      swapElements.find(".button").on("click", function() {
+        var state = Flip.getState(".swap-elements .container1, .swap-elements .container2");
+        smallImg.toggle("active");
+        bigImg.toggle("active");
+
+        Flip.from(state, {duration: 0.6, fade: true, absolute: true, toggleClass: "flipping", ease: "power1.inOut"});
+      });
+    });
+  </script>
+</body>
+</html>

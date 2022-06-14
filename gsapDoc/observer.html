@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/index.css">
+  <title>observer</title>
+</head>
+<body>
+  <div class="observer-wrap">
+    <header>
+      <h1 class="section-num">section<span class="num">1</span></h1>
+    </header>
+    <div class="observer">
+      <div class="section first">
+        <div class="outer">
+          <div class="inner">
+            <div class="bg one">
+              <div class="txt">스크롤 트리거를 사용하지 않고 스크롤 효과를 낼 수 있습니다.</div>
+              <div class="txt">마우스로 화면을 클릭하고 위, 아래로 드래그하면 화면이 전환됩니다.</div>
+              <div class="txt">마우스 휠로도 화면 전환이 가능합니다.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section second">
+        <div class="outer">
+          <div class="inner">
+            <div class="bg one">
+              <div class="box">클릭</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section third">
+        <div class="outer">
+          <div class="inner">
+            <div class="bg"></div>
+          </div>
+        </div>
+      </div>
+      <div class="section fourth">
+        <div class="outer">
+          <div class="inner">
+            <div class="bg"></div>
+          </div>
+        </div>
+      </div>
+      <div class="section fifth">
+        <div class="outer">
+          <div class="inner">
+            <div class="bg"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./js/jquery-2.2.4.min.js"></script>
+  <script src="./js/gsap.min.js"></script>
+  <!-- <script src="./js/ScrollTrigger.min.js"></script> -->
+
+  <!-- scrollTrigger를 해당 페이지에서 사용하는 경우, observer.js를 따로 또 쓸 필요 없음 -->
+  <script src="./js/Observer.min.js"></script>
+
+  <script>
+    $(function() {
+      // observer는 scrolltrigger 플러그인 안에 들어있는 기능이라
+      // scrolltrigger를 사용하는 페이지에서는 따로 observer플러그인을
+      // 등록할 필요가 없음
+      // gsap.registerPlugin(ScrollTrigger);
+      gsap.registerPlugin(Observer);
+      var sections = $(".observer .section");
+      var bg = $(".observer .bg");
+      var txt = $(".observer .txt");
+      var outerWrappers = $(".observer .outer");
+      var innerWrappers = $(".observer .inner");
+      var currIndex = -1;
+      var wrap = gsap.utils.wrap(0, sections.length);
+      //gsap.utils.wrap: 최대값을 넘어가면 최소값으로 돌아가고, 최소값을 넘어가면 최대값으로 넘어가게 하는 속성
+      var animating;
+
+      gsap.set(outerWrappers, {yPercent: 100});
+      gsap.set(innerWrappers, {yPercent: -100});
+
+      function gotoSection(index, direction) {
+        index = wrap(index);
+        animating = true;
+        var fromTop; 
+        var direction;
+        fromTop = direction === -1;
+        var dFactor = fromTop ? -1: 1;
+        var t1 = gsap.timeline({defaults: {duration: .5, ease: "sine.out"}, onComplete: function() {animating = false;}});
+        if(currIndex >= 0) {
+          gsap.set(sections[currIndex], {zIndex: 0});
+          t1.to(bg[currIndex], {yPercent: 15 * dFactor})
+          .set(sections[currIndex], {opacity: 0});
+        }
+        gsap.set(sections[index], {opacity: 1, zIndex: 1,});
+        t1.fromTo([outerWrappers[index], innerWrappers[index]], 
+        {yPercent: function(index) {
+          var value = index ? 100 * dFactor : -100 * dFactor;
+          console.log(value);
+          return value;
+        }}, {yPercent: 0,}, 0)
+        .fromTo(bg[index], {yPercent: -15 * dFactor}, {yPercent: 0}, 0);
+        
+        currIndex = index;
+      }
+
+      var backgroundScroll = Observer.create({
+        // 어떤 행동에 반응하게 할 건지 설정
+        // 기본적으로 마우스와 손가락에 반응
+        // wheel: 마우스 휠
+        // touch 휴대폰 등에서 손가락으로 터치
+        // pointer: 마우스 포인터로 클릭하고 동작
+        type: "wheel, touch, pointer",
+        // wheelSpeed를 -1로 둘 경우 마우스 휠 방향을 반대로 바꿀 수 있음
+        wheelSpeed: -1,
+        // tolerance: 몇 px 이상 동작이 이루어져야 onDown, onUp 등과 같은 함수가 실행될지
+        tolerance: 10,
+        preventDefault: true,
+        // onDown, onUp, onLeft 등의 속성을 사용하여 애니메이션 동작 제어
+        onDown: function() {
+          console.log("up", currIndex);
+          !animating && gotoSection(currIndex - 1, -1);
+          $(".observer-wrap .section-num .num").text(currIndex + 1);
+        },
+        onUp: function() {
+          console.log("down", currIndex);
+          !animating && gotoSection(currIndex + 1, 1);
+          $(".observer-wrap .section-num .num").text(currIndex + 1);
+        }
+      });
+      gotoSection(0, 1);
+
+      // 박스 클릭
+	    var box = $(".observer .second .box");
+
+      function getDifference(a, b) {
+		    return Math.abs(a - b); // 절대값 구하기
+	    }
+
+      var x = 0;
+	    var y = 0;
+      var observeBox = Observer.create({
+        type: "pointer, touch",
+        target: ".observer .second", // 해당 영역 안에서만 observer 작동
+        onPress: function(e) {
+          //박스가 마우스의 중앙에 위치하도록
+          var centerX = box.offset().left + box.innerWidth() / 2 - gsap.getProperty(".observer .second .box", "x");
+          var centerY = box.offset().top + (box.innerHeight() / 2 - gsap.getProperty(".observer .second .box", "y"));
+          x = getDifference(centerX, e.x);
+          y = getDifference(centerY, e.y);
+
+          var directionX = centerX > e.x ? -1 : 1;
+          var directionY = centerY > e.y ? -1 : 1;
+          
+          gsap.to(box, {x: x * directionX, y: y * directionY, ease: "sine.out", duration: .3,});
+          gsap.to(box, {rotate: "+=360", ease: "sine.out", scale: .5,});
+        }, 
+        onRelease: function() {
+          gsap.to(box, {scale: 1,});
+        }
+      });
+    });
+  </script>
+</body>
+</html>

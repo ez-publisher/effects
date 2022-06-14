@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/splitting.css">
+  <title>SplitText</title>
+</head>
+
+<style>
+  .txt {padding: 50px;}
+  .split-txt {font-size: 30px;}
+  .split-txt2 {margin: 30px 0; font-size: 30px;}
+  .split-txt3 {font-size: 24px;}
+</style>
+
+<body>
+  <div class="txt">
+    <div class="split-txt">GSAP SplitText 대용</div>
+    <div class="split-txt2">GSAP SplitText 대용</div>
+    <div class="split-txt3">https://splitting.js.org/guide.html#what-is-splitting</div>
+  </div>
+
+  <script src="./js/jquery-2.2.4.min.js"></script>
+  <script src="./js/gsap.min.js"></script>
+  <script src="./js/splitting.min.js"></script>
+  <script>
+    $(function() {
+      var split1 = Splitting({target: $(".split-txt"), by: "words"});
+      var split2 = Splitting({target: $(".split-txt2")});
+      var split2 = Splitting({target: $(".split-txt3")});
+
+      gsap.fromTo(".split-txt .word", 
+      {opacity: 0,}, 
+      {opacity: 1, xPercent: 20, stagger: .3, duration: .5, repeat: -1, yoyo: true, ease: "sine.out",});
+      
+      gsap.fromTo(".split-txt2 .word .char", 
+      {opacity: 0,}, 
+      {opacity: 1, xPercent: 20, stagger: .2, duration: .2, repeat: -1, yoyo: true, ease: "sine.out",});
+
+      gsap.fromTo(".split-txt3 .word .char", 
+      {opacity: 0,}, 
+      {opacity: 1, xPercent: 20, stagger: .01, duration: .3, repeat: -1, yoyo: true, ease: "sine.out",});
+    });
+  </script>
+</body>
+</html>

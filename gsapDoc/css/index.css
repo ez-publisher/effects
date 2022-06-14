@@ -1,0 +1,89 @@
+/* reset+cross */
+/* http://west849.dothome.co.kr/ */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; box-sizing: border-box;}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {display: block;}
+body {line-height: 1;}
+ol, ul {list-style: none;}
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after, q:before, q:after {content: ""; content: none;}
+table {border-collapse: collapse; border-spacing: 0;}
+a {text-decoration: none; color: inherit;}
+input, button {border: 0; outline: none; box-sizing: border-box; padding: 0; margin: 0;}
+img {vertical-align: top;}
+/* // reset */
+
+/* docs */
+.docs .section {width: 100%; padding: 30px 50px;}
+.docs .title {font-size: 30px; font-weight: bold; color: steelblue; margin-bottom: 30px;}
+.docs .container {padding-left: 50px;}
+.docs .txt {margin-bottom: 10px; font-size: 18px;}
+.docs .span-txt {display: block; margin-top: 10px; font-size: 16px;}
+.docs .pre {margin-top: 20px; font-size: 18px; line-height: 24px;}
+.docs .link {display: inline-block; vertical-align: top; margin-top: 20px; padding: 5px; border: 1px solid #000;}
+/* // docs */
+
+/* flip */
+.flip-prac {padding: 100px; overflow: hidden;}
+.flip-prac h1 {margin-bottom: 50px; font-size: 40px; font-weight: bold;}
+.flip-prac h3 {margin-bottom: 20px; width: 100%; font-size: 20px; font-weight: bold;}
+.flip-prac .width-height {width: 100%;}
+.flip-prac .width-height .wrap {display: flex;}
+.flip-prac .width-height .left-side {position: relative; margin-right: 100px;}
+.flip-prac .width-height .left-side .container1 {width: 200px; height: 200px; border: 1px solid pink;}
+/* width: 100%;로 둬서 자유롭게 크기값이 변할 수 있게 함 */
+.flip-prac .width-height .box {position: relative; width: 100%; height: 100%; background: #ccc;}
+
+.flip-prac .width-height a.button {position: absolute; top: 250px; left: 0; padding: 10px; text-align: center; border: 1px solid #000;}
+.flip-prac .width-height .right-side .container2 {width: 500px; height: 500px; border: 1px solid red;}
+
+.flip-prac .scale-change {width: 100%; margin-top: 60px;}
+.flip-prac .scale-change .wrap {display: flex;}
+.flip-prac .scale-change .left-side {position: relative; margin-right: 100px;}
+.flip-prac .scale-change .left-side .container1 {width: 200px; height: 200px; border: 1px solid pink;}
+.flip-prac .scale-change .box {position: relative; width: 100%; height: 100%; background: #ccc;}
+.flip-prac .scale-change .box p {position: absolute; top: 0; left: 0; font-size: 20px; color: #fff;}
+/* width: 100%;로 둬서 자유롭게 크기값이 변할 수 있게 함 */
+.flip-prac .scale-change .box img {width: 100%; height: 100%; object-fit: cover;}
+
+.flip-prac .scale-change a.button {position: absolute; top: 250px; left: 0; padding: 10px; text-align: center; border: 1px solid #000;}
+.flip-prac .scale-change .right-side .container2 {width: 500px; height: 500px; border: 1px solid red;}
+
+.flip-prac .swap-elements {position: relative; width: 100%; height: 600px; margin-top: 60px;}
+.flip-prac .swap-elements .wrap {position: absolute; top: 40px; left: 0; display: flex; width: 100%;}
+.flip-prac .swap-elements .left-side {position: relative; margin-right: 100px;}
+.flip-prac .swap-elements .left-side .container1 {width: 200px; height: 200px; border: 1px solid pink;}
+.flip-prac .swap-elements .box {position: relative; width: 100%; height: 100%; background: #ccc;}
+.flip-prac .swap-elements .box p {position: absolute; top: 0; left: 0; font-size: 20px; color: #fff;}
+/* width: 100%;로 둬서 자유롭게 크기값이 변할 수 있게 함 */
+.flip-prac .swap-elements img {width: 100%; height: 100%; object-fit: cover;}
+
+.flip-prac .swap-elements a.button {position: absolute; top: 250px; left: 0; padding: 10px; text-align: center; border: 1px solid #000;}
+.flip-prac .swap-elements .right-side .container2 {width: 500px; height: 500px; border: 1px solid red;}
+.flip-prac .swap-elements .small-img.active {visibility: hidden;}
+.flip-prac .swap-elements .big-img {display: none;}
+.flip-prac .swap-elements .big-img.active {display: block;}
+.flip-prac .swap-elements .small-img, .flip-prac .swap-elements .small-img.flipping {visibility: visible;}
+/* // flip */
+
+/* observer.html */
+.observer-wrap header {position: fixed; top: 0; left: 0; padding: 20px; width: 100%; height: 80px; z-index: 10;}
+.observer-wrap .section-num {font-size: 40px; font-weight: bold; color: #fff;}
+.observer {width: 100%; height: 100vh; background: #000;}
+.observer .section {position: fixed; top: 0; opacity: 0; width: 100%; height: 100%;}
+.observer .outer, .observer .inner {width: 100%; height: 100%; overflow-y: hidden;}
+.observer .bg {position: absolute; top: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%;}
+.observer .first .bg {background: url(../images/bg1.jpg) no-repeat center / cover;}
+.observer .second .bg {background: url(../images/bg2.jpg) no-repeat center / cover;}
+.observer .third .bg {background: url(../images/bg3.jpg) no-repeat center / cover;}
+.observer .fourth .bg {background: url(../images/bg4.jpg) no-repeat center / cover;}
+.observer .fifth .bg {background: url(../images/bg5.jpg) no-repeat center / cover;}
+.observer .bg .txt {margin-bottom: 30px; width: 100%; font-size: 40px; font-weight: bold; text-align: center; color: #fff;}
+.observer .box {width: 120px; height: 120px; border-radius: 20px; text-align: center; line-height: 120px; font-size: 30px; background: #fff;}
+/* // observer.html */
+
+/* draggable */
+  .draggable {padding: 100px 50px;}
+  .draggable .circle {position: relative; width: 300px; height: 300px; border-radius: 50%; background: #000;}
+  .draggable .circle .red-circle {position: absolute; top: 15px; left: 50%; transform: translateX(-50%); width: 30px; height: 30px; border-radius: 50%; background: red;}
+/* // draggable */

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/splitting.css">
+  <link rel="stylesheet" href="./css/index.css">
+  <title>Draggable</title>
+</head>
+<body>
+    <div class="draggable">
+      <div class="circle"><div class="red-circle"></div></div>
+    </div>
+    
+    <script src="./js/jquery-2.2.4.min.js"></script>
+    <script src="./js/splitting.min.js"></script>
+    <script src="./js/gsap.min.js"></script>
+    <script src="./js/Draggable.min.js"></script>
+    <script>
+      $(function() {
+        gsap.registerPlugin(Draggable);
+        var sections = 9;
+
+        var draggable = Draggable.create(".circle", {
+          type: "rotation", edgeResistance: .85, dragResistance: .2,
+          bounds: {minRotation: 0, maxRotation: 360},
+          
+          // liveSnap: 단계별로 드래그 가능하게 해주는 기능
+          liveSnap: function(endValue) {
+            var step = 360 / (sections - 1);
+            return Math.round( endValue / step) * step;
+          },
+          onDrag: function() {console.log(this.rotation);}
+        });
+      }); //end
+    </script>
+</body>
+</html>

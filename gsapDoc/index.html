@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/index.css">
+  <title>GSAP 플러그인</title>
+</head>
+<body>
+  <div class="docs">
+    <div class="section section1">
+      <div>
+        <div class="title"><a href="https://greensock.com/docs/v3/Plugins/Observer">#1. Observer</a></div>
+        <div class="container">
+          <p class="txt">- 마우스 휠, 마우스 클릭, 핸드폰 터치 이벤트에 반응</p>
+          <p class="txt">- gsap.registerPlugin(Observer);<span class="span-txt">&#8251; scrollTrigger를 이미 사용중이면 따로 Observer를 등록할 필요 없음</span></p>
+          <pre class="pre">
+            Observer.create({
+              target: window,
+              type: "wheel, touch",
+              onUp: function() {},
+              onDown: function() {},
+              .
+              .
+              .
+              계속해서 함수를 추가할 수 있음
+              자유롭게 마우스 이벤트 제어 가능
+            });
+          </pre>
+          <a class="link" href="./observer.html">참고</a>
+          <a class="link" href="https://codepen.io/collection/KpNYOd">예제</a>
+        </div>
+      </div>
+    </div>
+    <div class="section section2">
+      <div class="title"><a href="https://greensock.com/docs/v3/Plugins/Flip">#2. FLIP</a></div>
+      <div class="container">
+        <p class="txt">- "First", "Last", "Invert", "Play"</p>
+        <p class="txt">- 이벤트가 발생한 요소에 다시 이벤트를 주면 이벤트가 되감기 되는 효과</p>
+        <p class="txt">- Flip.getState("클래스 명")로, 해당 클래스 명의 현재 position / size / rotation 정보를 담아서 리턴해줌</p>
+        <p class="txt">- gsap.registerPlugin(Flip);</p>
+        <a class="link" href="./flip.html">참고</a>
+        <a class="link" href="https://codepen.io/collection/nqvwmG">예제</a>
+      </div>
+    </div>
+    <div class="section section3">
+      <div class="title"><a href="">#3. Draggable</a></div>
+      <div class="container">
+        <p class="txt">드래그 효과</p>
+        <p class="txt">- gsap.registerPlugin(Draggable);</p>
+        <a class="link" href="./draggable.html">참고</a>
+        <a class="link" href="https://codepen.io/collection/XoGKyX">예제</a>
+      </div>
+    </div>
+    <div class="section section4">
+      <div class="title"><a href="https://splitting.js.org/guide.html#what-is-splitting">#4. gsap splitText 대용</a></div>
+      <div class="container">
+        <p class="txt">&lt;link rel="stylesheet" href="./css/splitting.css"&gt;</p>
+        <p class="txt">&lt;script src="./js/splitting.min.js"&gt;</p><br>
+        <p class="txt">css / script 선언 후</p>
+        <p class="txt">Splitting({target: $(".split-txt"), by: "words"});</p>
+        <p class="txt">by: "words" 안 쓰면 기본적으로 단어를 글자 하나하나로 나눔 (chars)</p>
+        <a class="link" href="./text-split.html">참고</a>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+</html>
